@@ -1,7 +1,8 @@
 <template>
   <q-page class="flex flex-center">
+    
     <div>
-      <q-btn id="get-access" @click="getAccess()">Get access to camera</q-btn>
+      
 
       <div class="resultFrame">
         <video style="display: block;" ref="video" autoplay></video>
@@ -145,22 +146,7 @@ export default {
         this.videoWidth = 480
       }
     },
-    async getAccess(){
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
-          video: true
-        })
-        const videoTracks = stream.getVideoTracks()
-        const track = videoTracks[0]
-        document.querySelector('#get-access').setAttribute('hidden', true)
-        setTimeout(() => { track.stop() }, 3 * 1000)
-      } catch (error) {
-        alert(`${error.name}`)
-        console.error(error)
-      }
-
-    },
+    
 
     renderPredictions (predictions) {
       
