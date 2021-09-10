@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex flex-center">
+    
     <div>
       
 
@@ -17,7 +18,6 @@
         </option>
       </select> -->
     </div>
-    <h1 class="red">A{{error}}</h1>
   </q-page>
 </template>
 
@@ -48,14 +48,13 @@ export default {
       resultHeight: 0,
       videoHeight: 480,
       videoWidth: 270,
-      error: ''
     }
   },
 
   methods: {
-    async initWebcamStream () {
+    initWebcamStream () {
+      alert('entrouu')
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        this.error = "pelo menos entrou"
         return navigator.mediaDevices.getUserMedia({
           audio: false, 
           video: { 
@@ -79,18 +78,15 @@ export default {
 
                 this.isVideoStreamReady = true
                 console.log('webcam stream initialized')
-                this.error = 'webcam stream initialized'
                 resolve()
               }
             })
           })
           .catch(error => {
             console.log('failed to initialize webcam stream', error)
-            this.error = "failed to initialize webcam stream"
             throw (error)
           })
       } else {
-        this.error = "Your browser does not support mediaDevices.getUserMedia API"
         return Promise.reject(new Error('Your browser does not support mediaDevices.getUserMedia API'))
       }
     },
@@ -174,6 +170,22 @@ export default {
           prediction.bbox[1] > 10 ? prediction.bbox[1] - 5 : 10)
       })
       
+    },
+    async getAccess(){
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: false,
+          video: true
+        })
+        const videoTracks = stream.getVideoTracks()
+        const track = videoTracks[0]
+        
+        setTimeout(() => { track.stop() }, 3 * 1000)
+      } catch (error) {
+        alert(`${error.name}`)
+        console.error(error)
+      }
+
     },
   },
   
