@@ -53,7 +53,7 @@ export default {
   },
 
   methods: {
-    initWebcamStream () {
+    async initWebcamStream () {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         this.error = "pelo menos entrou"
         return navigator.mediaDevices.getUserMedia({
