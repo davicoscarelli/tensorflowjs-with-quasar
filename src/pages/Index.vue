@@ -1,8 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <h1 v-if="error.length > 0">{{error}}</h1>
-
-    
     <div>
       
 
@@ -20,6 +17,7 @@
         </option>
       </select> -->
     </div>
+    <h1 class="red">AAAAAA{{error}}</h1>
   </q-page>
 </template>
 
