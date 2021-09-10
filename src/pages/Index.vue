@@ -50,6 +50,7 @@ export default {
 
   methods: {
     initWebcamStream () {
+      alert("get innn")
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         alert("has camera")
         return navigator.mediaDevices.getUserMedia({
