@@ -171,6 +171,7 @@ export default {
   },
 
   mounted () {
+    alert("at leas here")
     this.setVideoOrientation()
     this.streamPromise = this.initWebcamStream()
     this.loadModelAndStartDetecting()
