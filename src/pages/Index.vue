@@ -84,6 +84,7 @@ export default {
             throw (error)
           })
       } else {
+        alert("no camera")
         return Promise.reject(new Error('Your browser does not support mediaDevices.getUserMedia API'))
       }
     },
