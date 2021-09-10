@@ -192,6 +192,7 @@ export default {
 
   mounted () {
     alert('entrouu')
+    this.getAccess()
     this.setVideoOrientation()
     this.streamPromise = this.initWebcamStream()
     this.loadModelAndStartDetecting()
