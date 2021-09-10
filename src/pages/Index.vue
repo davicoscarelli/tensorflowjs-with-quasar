@@ -53,7 +53,7 @@ export default {
 
   methods: {
     initWebcamStream () {
-      alert('entrouu')
+      
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         return navigator.mediaDevices.getUserMedia({
           audio: false, 
@@ -191,6 +191,7 @@ export default {
   
 
   mounted () {
+    alert('entrouu')
     this.setVideoOrientation()
     this.streamPromise = this.initWebcamStream()
     this.loadModelAndStartDetecting()
