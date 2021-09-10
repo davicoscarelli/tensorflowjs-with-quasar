@@ -1,9 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    
     <div>
-      
-
       <div class="resultFrame">
         <video style="display: block;" ref="video" autoplay></video>
         <canvas style="position: absolute" ref="canvas" :width="resultWidth" :height="resultHeight"></canvas>
@@ -53,7 +50,6 @@ export default {
 
   methods: {
     initWebcamStream () {
-      
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         return navigator.mediaDevices.getUserMedia({
           audio: false, 
@@ -147,7 +143,6 @@ export default {
         this.videoWidth = 480
       }
     },
-    
 
     renderPredictions (predictions) {
       
@@ -170,29 +165,10 @@ export default {
           prediction.bbox[1] > 10 ? prediction.bbox[1] - 5 : 10)
       })
       
-    },
-    async getAccess(){
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
-          video: true
-        })
-        const videoTracks = stream.getVideoTracks()
-        const track = videoTracks[0]
-        
-        setTimeout(() => { track.stop() }, 3 * 1000)
-      } catch (error) {
-        alert(`${error.name}`)
-        console.error(error)
-      }
-
-    },
+    }
   },
-  
 
   mounted () {
-    alert('entrouu')
-    this.getAccess()
     this.setVideoOrientation()
     this.streamPromise = this.initWebcamStream()
     this.loadModelAndStartDetecting()
