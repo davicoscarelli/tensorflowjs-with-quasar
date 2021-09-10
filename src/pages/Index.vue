@@ -51,6 +51,7 @@ export default {
   methods: {
     initWebcamStream () {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        alert("has camera")
         return navigator.mediaDevices.getUserMedia({
           audio: false, 
           video: { 
