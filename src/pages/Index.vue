@@ -50,7 +50,7 @@ export default {
 
   methods: {
     initWebcamStream () {
-      alert("get innn")
+      alert("cammm")
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         alert("has camera")
         return navigator.mediaDevices.getUserMedia({
@@ -139,12 +139,19 @@ export default {
     },
 
     setVideoOrientation(){
-      let orientation = window.screen.orientation
+      alert("oriennnn")
+      try {
+        let orientation = window.screen.orientation
 
-      if(orientation.type.includes("landscape")){
-        this.videoHeight = 270
-        this.videoWidth = 480
+        if(orientation.type.includes("landscape")){
+          this.videoHeight = 270
+          this.videoWidth = 480
+        }
+        
+      } catch (error) {
+        alert("orien errorr")
       }
+      
     },
 
     renderPredictions (predictions) {
