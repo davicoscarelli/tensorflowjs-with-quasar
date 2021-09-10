@@ -17,7 +17,7 @@
         </option>
       </select> -->
     </div>
-    <h1 class="red">AAAAAA{{error}}</h1>
+    <h1 class="red">A{{error}}</h1>
   </q-page>
 </template>
 
@@ -55,6 +55,7 @@ export default {
   methods: {
     initWebcamStream () {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        this.error = "pelo menos entrou"
         return navigator.mediaDevices.getUserMedia({
           audio: false, 
           video: { 
@@ -78,12 +79,14 @@ export default {
 
                 this.isVideoStreamReady = true
                 console.log('webcam stream initialized')
+                this.error = 'webcam stream initialized'
                 resolve()
               }
             })
           })
           .catch(error => {
             console.log('failed to initialize webcam stream', error)
+            this.error = "failed to initialize webcam stream"
             throw (error)
           })
       } else {
