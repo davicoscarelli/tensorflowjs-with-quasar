@@ -14,9 +14,7 @@
         <q-toolbar-title>
           Late Night AI 🤖
         </q-toolbar-title>
-
-        <q-btn id="get-access" @click="getAccess()">Init</q-btn>
-
+        
       </q-toolbar>
     </q-header>
 
@@ -76,23 +74,8 @@ export default defineComponent({
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-      async getAccess(){
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
-          video: true
-        })
-        const videoTracks = stream.getVideoTracks()
-        const track = videoTracks[0]
-        document.querySelector('#get-access').setAttribute('hidden', true)
-        setTimeout(() => { track.stop() }, 3 * 1000)
-      } catch (error) {
-        alert(`${error.name}`)
-        console.error(error)
       }
-
-    },
+      
     }
   }
 })

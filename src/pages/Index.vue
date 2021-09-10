@@ -1,5 +1,7 @@
 <template>
   <q-page class="flex flex-center">
+    <h1 v-if="error.length > 0">{{error}}</h1>
+
     
     <div>
       
@@ -48,6 +50,7 @@ export default {
       resultHeight: 0,
       videoHeight: 480,
       videoWidth: 270,
+      error: ''
     }
   },
 
@@ -86,6 +89,7 @@ export default {
             throw (error)
           })
       } else {
+        this.error = "Your browser does not support mediaDevices.getUserMedia API"
         return Promise.reject(new Error('Your browser does not support mediaDevices.getUserMedia API'))
       }
     },
@@ -169,8 +173,9 @@ export default {
           prediction.bbox[1] > 10 ? prediction.bbox[1] - 5 : 10)
       })
       
-    }
+    },
   },
+  
 
   mounted () {
     this.setVideoOrientation()
